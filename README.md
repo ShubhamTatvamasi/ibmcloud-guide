@@ -16,8 +16,14 @@ ibm_cluster=$(ibmcloud ks cluster ls --json) \
   ibmcloud ks worker ls --cluster $(echo ${ibm_cluster} | jq -r '.[0].name')
 ```
 
-delete a cluster
+get cluster state
 ```bash
+ibm_cluster=$(ibmcloud ks cluster ls --json) \
+  ibmcloud ks cluster get --cluster $(echo ${ibm_cluster} | jq -r '.[0].name')
+```
+
+delete a cluster
+```
 ibm_cluster=$(ibmcloud ks cluster ls --json) \
   ibmcloud ks cluster rm --cluster $(echo ${ibm_cluster} | jq -r '.[0].name') -f
 ```
