@@ -2,12 +2,14 @@
 
 get list on workers in a cluster
 ```bash
-ibmcloud ks worker ls --cluster $(ibmcloud ks cluster ls --json | jq -r '.[0].name')
+ibm_cluster=$(ibmcloud ks cluster ls --json) \
+  ibmcloud ks worker ls --cluster $(echo ${ibm_cluster} | jq -r '.[0].name')
 ```
 
 delete a cluster
 ```bash
-ibmcloud ks cluster rm --cluster $(ibmcloud ks cluster ls --json | jq -r '.[0].name') -f
+ibm_cluster=$(ibmcloud ks cluster ls --json) \
+  ibmcloud ks cluster rm --cluster $(echo ${ibm_cluster} | jq -r '.[0].name') -f
 ```
 
 
