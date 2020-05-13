@@ -5,6 +5,11 @@ create a new cluster
 ibmcloud ks cluster create classic --name cka
 ```
 
+list clusters
+```bash
+ibmcloud ks cluster ls 
+```
+
 get list on workers in a cluster
 ```bash
 ibm_cluster=$(ibmcloud ks cluster ls --json) \
