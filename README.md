@@ -7,7 +7,7 @@ ibmcloud ks cluster create classic --name cka
 
 list clusters
 ```bash
-ibmcloud ks cluster ls 
+ibmcloud ks cluster ls
 ```
 
 save cluster info in a variable
@@ -40,4 +40,3 @@ update ibmcloud cli
 ```bash
 ibmcloud update
 ```
-
