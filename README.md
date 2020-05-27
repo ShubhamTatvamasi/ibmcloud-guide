@@ -18,22 +18,22 @@ ibm_cluster_name=$(echo ${ibm_cluster} | jq -r '.[0].name')
 
 get list on workers in a cluster
 ```bash
-ibmcloud ks worker ls --cluster ${ibm_cluster_name}
+ibmcloud ks worker ls --cluster cka
 ```
 
 get cluster state
 ```bash
-ibmcloud ks cluster get --cluster ${ibm_cluster_name}
+ibmcloud ks cluster get --cluster cka
 ```
 
 config cluster
 ```bash
-ibmcloud ks cluster config --cluster ${ibm_cluster_name}
+ibmcloud ks cluster config --cluster cka
 ```
 
 delete a cluster
 ```bash
-ibmcloud ks cluster rm --cluster ${ibm_cluster_name} -f
+ibmcloud ks cluster rm --cluster cka -f
 ```
 
 update ibmcloud cli
