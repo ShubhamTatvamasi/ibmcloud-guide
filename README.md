@@ -31,7 +31,7 @@ config cluster
 ibmcloud ks cluster config --cluster cka
 ```
 
-delete a cluster
+delete cluster
 ```bash
 ibmcloud ks cluster rm --cluster cka -f
 ```
