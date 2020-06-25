@@ -40,3 +40,8 @@ update ibmcloud cli
 ```bash
 ibmcloud update
 ```
+
+update your region to "India Chennai"
+```bash
+ibmcloud target -r in-che
+```
