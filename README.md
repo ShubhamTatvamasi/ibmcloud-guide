@@ -1,5 +1,10 @@
 # ibmcloud-guide
 
+Install kubernetes plugin:
+```bash
+ibmcloud plugin install container-service
+```
+
 create a new cluster
 ```bash
 ibmcloud ks cluster create classic --name cka
