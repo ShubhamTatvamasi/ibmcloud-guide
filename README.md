@@ -51,3 +51,8 @@ update your region to "India Chennai"
 ibmcloud target -r in-che
 ```
 > Just run `ibmcloud target` if you want to get current target.
+
+List all locations:
+```bash
+ibmcloud ks locations
+```
