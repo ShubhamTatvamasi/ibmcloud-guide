@@ -50,3 +50,4 @@ update your region to "India Chennai"
 ```bash
 ibmcloud target -r in-che
 ```
+> Just run `ibmcloud target` if you want to get current target.
