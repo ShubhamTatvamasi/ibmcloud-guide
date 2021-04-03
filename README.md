@@ -56,3 +56,8 @@ List all locations:
 ```bash
 ibmcloud ks locations
 ```
+
+Check kubernetes versions on IBM Cloud:
+```bash
+ibmcloud ks versions
+```
