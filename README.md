@@ -11,12 +11,6 @@ list clusters
 ibmcloud ks cluster ls
 ```
 
-save cluster info in a variable
-```bash
-ibm_cluster=$(ibmcloud ks cluster ls --json)
-ibm_cluster_name=$(echo ${ibm_cluster} | jq -r '.[0].name')
-```
-
 get list on workers in a cluster
 ```bash
 ibmcloud ks worker ls --cluster cka
@@ -56,6 +50,12 @@ ibmcloud ks locations
 Check kubernetes versions on IBM Cloud:
 ```bash
 ibmcloud ks versions
+```
+
+save cluster info in a variable
+```bash
+ibm_cluster=$(ibmcloud ks cluster ls --json)
+ibm_cluster_name=$(echo ${ibm_cluster} | jq -r '.[0].name')
 ```
 ---
 
