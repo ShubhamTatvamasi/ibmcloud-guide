@@ -1,9 +1,5 @@
 # ibmcloud-guide
 
-Install kubernetes plugin:
-```bash
-ibmcloud plugin install container-service
-```
 
 create a new cluster
 ```bash
@@ -61,3 +57,12 @@ Check kubernetes versions on IBM Cloud:
 ```bash
 ibmcloud ks versions
 ```
+---
+
+### plugins
+
+Install kubernetes plugin:
+```bash
+ibmcloud plugin install container-service
+```
+
