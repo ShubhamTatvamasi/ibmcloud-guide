@@ -1,5 +1,9 @@
 # ibmcloud-guide
 
+Login to IBM Cloud:
+```bash
+ibmcloud login
+```
 
 create a new cluster
 ```bash
