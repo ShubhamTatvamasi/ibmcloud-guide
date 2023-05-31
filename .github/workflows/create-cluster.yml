@@ -9,7 +9,8 @@ on:
         type: boolean
       create-cluster:
         description: 'Create New Cluster'
-        required: true
+        required: false
+        default: true
         type: boolean
 
 jobs:
