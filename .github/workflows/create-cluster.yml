@@ -8,7 +8,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - run: |
+    - name: Setup IBM Cloud Key and Ansible Collection
+      run: |
         mkdir -p ~/.ibmcloud
         echo ${{ secrets.IBM_CLOUD_API_KEY }} > ~/.ibmcloud/my_key_file
-        chmod 600 ~/.ibmcloud/my_key_file
+
+        ansible-galaxy collection install ibm.cloudcollection
