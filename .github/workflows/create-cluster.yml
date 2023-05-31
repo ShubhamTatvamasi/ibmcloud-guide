@@ -25,7 +25,7 @@ jobs:
       run: ansible-galaxy collection install ibm.cloudcollection
 
     - name: Delete Cluster
-      when: ${{ inputs.delete-cluster }}
+      if: ${{ inputs.delete-cluster }}
       run: echo "Delete Cluster"
       # run: ansible-playbook create-cluster.yml
 
