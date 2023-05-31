@@ -54,3 +54,8 @@ jobs:
     - name: Cluster Config
       if: ${{ inputs.install-frp }}
       run: ansible-playbook cluster-config.yml
+
+    - name: Install frp
+      if: ${{ inputs.install-frp }}
+      run: |
+        kubectl get pods -A
