@@ -1,0 +1,35 @@
+---
+- name: Get cluster info
+  ibm.cloudcollection.ibm_container_cluster_info:
+    ibmcloud_api_key: "{{ lookup('file', '~/.ibmcloud/my_key_file') }}"
+    name: "{{ cluster_name }}"
+  register: cluster_info
+
+- name: Cluster info
+  debug:
+    msg: "{{ cluster_info }}"
+
+- name: Set cluster ID and Zone
+  set_fact:
+    cluster_id: "{{ cluster_info.resource.id }}"
+    cluster_zone: "{{ cluster_info.resource.worker_pools[0].zones[0].zone }}"
+
+- name: Cluster ID and Zone
+  debug:
+    msg: 
+      - "{{ cluster_id }}"
+      - "{{ cluster_zone }}"
+
+- name: Delete cluster
+  ibm.cloudcollection.ibm_container_cluster:
+    ibmcloud_api_key: "{{ lookup('file', '~/.ibmcloud/my_key_file') }}"
+    id: "{{ cluster_id }}"
+    name: "{{ cluster_name }}"
+    datacenter: "{{ cluster_zone }}"
+    hardware: shared
+    state: absent
+  register: delete_cluster_info
+
+- name: Delete cluster info
+  debug:
+    msg: "{{ delete_cluster_info }}"

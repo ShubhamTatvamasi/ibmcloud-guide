@@ -1,0 +1,7 @@
+---
+- name: Deploy Kubernetes Cluster
+  connection: local
+  hosts: localhost
+  roles:
+    # - role: delete_cluster
+    - role: create_cluster

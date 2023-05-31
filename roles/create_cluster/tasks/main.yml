@@ -1,0 +1,13 @@
+---
+- name: Create cluster
+  ibm.cloudcollection.ibm_container_cluster:
+    ibmcloud_api_key: "{{ lookup('file', '~/.ibmcloud/my_key_file') }}"
+    name: "{{ cluster_name }}"
+    datacenter: "{{ datacenter }}"
+    hardware: shared
+    machine_type: free
+  register: create_cluster_info
+
+- name: Create cluster info
+  debug:
+    msg: "{{ create_cluster_info }}"

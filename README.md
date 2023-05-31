@@ -71,3 +71,9 @@ Install kubernetes plugin:
 ibmcloud plugin install container-service
 ```
 
+### Ansible
+
+Install ibmcloud collection:
+```bash
+ansible-galaxy collection install ibm.cloudcollection
+```
