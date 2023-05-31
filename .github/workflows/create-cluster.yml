@@ -8,15 +8,12 @@ on:
         type: boolean
       create-cluster:
         description: 'Create New Cluster'
-        required: false
         type: boolean
       cluster-info:
         description: 'Get Cluster Info'
-        required: false
         type: boolean
       install-frp:
         description: 'Install frp'
-        required: false
         type: boolean
 
 jobs:
