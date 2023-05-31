@@ -29,11 +29,11 @@ jobs:
     - name: Install IBM Cloud Ansible Collection
       run: ansible-galaxy collection install ibm.cloudcollection
 
-    - name: Delete Cluster
+    - name: Delete Old Cluster
       if: ${{ inputs.delete-cluster }}
       run: ansible-playbook delete-cluster.yml
 
-    - name: Create Cluster
+    - name: Create New Cluster
       if: ${{ inputs.create-cluster }}
       run: ansible-playbook create-cluster.yml
 
