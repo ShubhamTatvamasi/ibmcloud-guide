@@ -1,0 +1,39 @@
+---
+- name: Add MetalLB Helm repository
+  kubernetes.core.helm_repository:
+    name: metallb
+    url: https://metallb.github.io/metallb
+
+- name: Install MetallLB
+  kubernetes.core.helm:
+    name: metallb
+    chart_ref: metallb/metallb
+    release_namespace: metallb-system
+    chart_version: "{{ metallb_chart_version }}"
+    create_namespace: true
+
+- name: Get Cluster Node Info
+  kubernetes.core.k8s_info:
+    kind: Node
+  register: k8s_info
+
+- name: Set Worker Node IP
+  set_fact:
+    worker_node_ip: "{{ k8s_info.resources[0].metadata.labels['ibm-cloud.kubernetes.io/external-ip'] }}"
+
+- name: Create IP Address Pool
+  ignore_errors: yes
+  register: result
+  until: result is not failed
+  retries: 100
+  delay: 10
+  kubernetes.core.k8s:
+    namespace: metallb-system
+    definition:
+      apiVersion: metallb.io/v1beta1
+      kind: IPAddressPool
+      metadata:
+        name: ip-pool
+      spec:
+        addresses:
+        - "{{ worker_node_ip }}/32"

@@ -51,4 +51,4 @@ jobs:
     - name: Install frp
       if: ${{ inputs.install-frp }}
       run: |
-        kubectl get pods -A
+        ansible-playbook install-frp.yml

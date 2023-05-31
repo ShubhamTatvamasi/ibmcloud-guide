@@ -1,0 +1,6 @@
+---
+- name: Install frp
+  connection: local
+  hosts: localhost
+  roles:
+    - role: frp
