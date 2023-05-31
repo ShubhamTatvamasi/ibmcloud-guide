@@ -1,6 +1,6 @@
 ---
-- name: Create Cluster
+- name: Cluster info
   connection: local
   hosts: localhost
   roles:
-    - role: create_cluster
+    - role: cluster_info

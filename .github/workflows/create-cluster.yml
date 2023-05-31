@@ -7,6 +7,10 @@ on:
         description: 'Delete Old Cluster'
         required: false
         type: boolean
+      create-cluster:
+        description: 'Create New Cluster'
+        required: true
+        type: boolean
 
 jobs:
   build:
@@ -29,4 +33,8 @@ jobs:
       run: ansible-playbook delete-cluster.yml
 
     - name: Create Cluster
+      if: ${{ inputs.create-cluster }}
       run: ansible-playbook create-cluster.yml
+
+    - name: Cluster Info
+      run: ansible-playbook cluster-info.yml
