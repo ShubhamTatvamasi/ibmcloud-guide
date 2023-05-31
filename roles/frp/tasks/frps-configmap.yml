@@ -1,0 +1,19 @@
+---
+- name: Create ConfigMap
+  kubernetes.core.k8s:
+    namespace: "{{ frp_namespace }}"
+    definition:
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: frps-config
+      data:
+        frps.ini: |
+          [common]
+          bind_port = 7000
+          dashboard_port = 7500
+          dashboard_user = admin
+          dashboard_pwd = admin
+          vhost_http_port = 80
+          vhost_https_port = 443
+          subdomain_host = k8s.shubhamtatvamasi.com

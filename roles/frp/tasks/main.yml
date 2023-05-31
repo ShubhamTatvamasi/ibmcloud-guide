@@ -1,4 +1,7 @@
 ---
 - import_tasks: kubernetes-pip.yml
 - import_tasks: metallb.yml
-# - import_tasks: frp.yml
+- import_tasks: frps-namespace.yml
+- import_tasks: frps-configmap.yml
+- import_tasks: frps-deployment.yml
+- import_tasks: frps-service.yml
