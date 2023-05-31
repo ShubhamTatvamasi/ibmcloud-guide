@@ -5,20 +5,20 @@
     name: "{{ cluster_name }}"
   register: cluster_info
 
-- name: Set worker ID
+- name: Set worker node ID
   set_fact:
     worker_id: "{{ cluster_info.resource.workers[0] }}"
 
-- name: Get worker info
+- name: Get worker node info
   ibm.cloudcollection.ibm_container_cluster_worker_info:
     ibmcloud_api_key: "{{ lookup('file', '~/.ibmcloud/my_key_file') }}"
     worker_id: "{{ worker_id }}"
   register: worker_info
 
-- name: Set worker public IP
+- name: Set worker node public IP
   set_fact:
     worker_public_ip: "{{ worker_info.resource.public_ip }}"
 
-- name: Worker public IP
+- name: Worker node public IP
   debug:
     msg: "{{ worker_public_ip }}"
