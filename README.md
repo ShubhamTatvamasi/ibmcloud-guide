@@ -3,6 +3,7 @@
 Login to IBM Cloud:
 ```bash
 ibmcloud login
+ibmcloud login --apikey @~/.ibmcloud/my_key_file
 ```
 
 create a new cluster
