@@ -1,6 +1,6 @@
 ---
-- name: Create Cluster
+- name: Delete Cluster
   connection: local
   hosts: localhost
   roles:
-    - role: create_cluster
+    - role: delete_cluster
