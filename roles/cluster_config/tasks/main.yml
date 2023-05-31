@@ -1,0 +1,38 @@
+---
+- name: Get cluster info
+  ibm.cloudcollection.ibm_container_cluster_info:
+    ibmcloud_api_key: "{{ lookup('file', '~/.ibmcloud/my_key_file') }}"
+    name: "{{ cluster_name }}"
+  register: cluster_info
+
+- name: Set cluster ID
+  set_fact:
+    cluster_id: "{{ cluster_info.resource.id }}"
+
+- name: Get cluster config info
+  ibm.cloudcollection.ibm_container_cluster_config_info:
+    ibmcloud_api_key: "{{ lookup('file', '~/.ibmcloud/my_key_file') }}"
+    cluster_name_id: "{{ cluster_id }}"
+  register: cluster_config_info
+
+- name: Set config path and CA certificate
+  set_fact:
+    config_file_path: "{{ cluster_config_info.resource.config_file_path }}"
+    ca_certificate: "{{ cluster_config_info.resource.ca_certificate }}"
+
+- name: Create .kube directory
+  file:
+    path: "{{ ansible_env.HOME }}/.kube"
+    state: directory
+
+- name: Copy kubeconfig file
+  copy:
+    src: "{{ config_file_path }}"
+    dest: "{{ ansible_env.HOME }}/.kube/config"
+    mode: '0600'
+
+-  name: Copy CA certificate
+   copy:
+    content: "{{ ca_certificate }}"
+    dest: "{{ ansible_env.HOME }}/.kube/ca.pem"
+    mode: '0600'

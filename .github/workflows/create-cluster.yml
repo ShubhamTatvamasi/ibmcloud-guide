@@ -12,6 +12,16 @@ on:
         required: false
         default: true
         type: boolean
+      cluster-info:
+        description: 'Get Cluster Info'
+        required: false
+        default: true
+        type: boolean
+      install-frp:
+        description: 'Install frp'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   build:
@@ -38,4 +48,9 @@ jobs:
       run: ansible-playbook create-cluster.yml
 
     - name: Cluster Info
+      if: ${{ inputs.cluster-info }}
       run: ansible-playbook cluster-info.yml
+
+    - name: Cluster Config
+      if: ${{ inputs.install-frp }}
+      run: ansible-playbook cluster-config.yml

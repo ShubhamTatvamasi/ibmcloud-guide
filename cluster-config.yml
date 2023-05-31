@@ -1,0 +1,6 @@
+---
+- name: Cluster config
+  connection: local
+  hosts: localhost
+  roles:
+    - role: cluster_config
