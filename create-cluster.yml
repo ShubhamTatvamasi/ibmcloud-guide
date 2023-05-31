@@ -4,3 +4,4 @@
   hosts: localhost
   roles:
     - role: create_cluster
+    - role: cluster_info

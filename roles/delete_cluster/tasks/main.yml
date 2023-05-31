@@ -5,20 +5,10 @@
     name: "{{ cluster_name }}"
   register: cluster_info
 
-- name: Cluster info
-  debug:
-    msg: "{{ cluster_info }}"
-
 - name: Set cluster ID and Zone
   set_fact:
     cluster_id: "{{ cluster_info.resource.id }}"
     cluster_zone: "{{ cluster_info.resource.worker_pools[0].zones[0].zone }}"
-
-- name: Cluster ID and Zone
-  debug:
-    msg: 
-      - "{{ cluster_id }}"
-      - "{{ cluster_zone }}"
 
 - name: Delete cluster
   ibm.cloudcollection.ibm_container_cluster:
@@ -28,8 +18,3 @@
     datacenter: "{{ cluster_zone }}"
     hardware: shared
     state: absent
-  register: delete_cluster_info
-
-- name: Delete cluster info
-  debug:
-    msg: "{{ delete_cluster_info }}"

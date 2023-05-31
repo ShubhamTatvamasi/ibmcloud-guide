@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       delete-cluster:
-        description: 'Delete Cluster'
+        description: 'Delete Old Cluster'
         required: false
         type: boolean
 
@@ -26,9 +26,7 @@ jobs:
 
     - name: Delete Cluster
       if: ${{ inputs.delete-cluster }}
-      run: echo "Delete Cluster"
-      # run: ansible-playbook create-cluster.yml
+      run: ansible-playbook delete-cluster.yml
 
     - name: Create Cluster
-      run: echo "Create Cluster"
-      # run: ansible-playbook create-cluster.yml
+      run: ansible-playbook create-cluster.yml

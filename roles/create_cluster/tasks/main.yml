@@ -6,8 +6,3 @@
     datacenter: "{{ datacenter }}"
     hardware: shared
     machine_type: free
-  register: create_cluster_info
-
-- name: Create cluster info
-  debug:
-    msg: "{{ create_cluster_info }}"

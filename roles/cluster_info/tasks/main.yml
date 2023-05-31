@@ -1,0 +1,24 @@
+---
+- name: Get cluster info
+  ibm.cloudcollection.ibm_container_cluster_info:
+    ibmcloud_api_key: "{{ lookup('file', '~/.ibmcloud/my_key_file') }}"
+    name: "{{ cluster_name }}"
+  register: cluster_info
+
+- name: Set worker ID
+  set_fact:
+    worker_id: "{{ cluster_info.resource.workers[0] }}"
+
+- name: Get worker info
+  ibm.cloudcollection.ibm_container_cluster_worker_info:
+    ibmcloud_api_key: "{{ lookup('file', '~/.ibmcloud/my_key_file') }}"
+    worker_id: "{{ worker_id }}"
+  register: worker_info
+
+- name: Set worker public IP
+  set_fact:
+    worker_public_ip: "{{ worker_info.resource.public_ip }}"
+
+- name: Worker public IP
+  debug:
+    msg: "{{ worker_public_ip }}"
