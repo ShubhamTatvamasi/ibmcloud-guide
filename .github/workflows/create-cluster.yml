@@ -9,5 +9,6 @@ jobs:
     - uses: actions/checkout@v3
 
     - run: |
+        mkdir -p ~/.ibmcloud
         echo ${{ secrets.IBM_CLOUD_API_KEY }} > ~/.ibmcloud/my_key_file
         chmod 600 ~/.ibmcloud/my_key_file
