@@ -3,5 +3,5 @@
   connection: local
   hosts: localhost
   roles:
-    # - role: delete_cluster
+    - role: delete_cluster
     - role: create_cluster

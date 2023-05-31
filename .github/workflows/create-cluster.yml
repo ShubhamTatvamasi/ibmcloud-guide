@@ -1,16 +1,34 @@
 name: Create Cluster
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      delete-cluster:
+        description: 'Delete Cluster'
+        required: false
+        type: boolean
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
 
-    - name: Setup IBM Cloud Key and Ansible Collection
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup IBM Cloud API Key
       run: |
         mkdir -p ~/.ibmcloud
         echo ${{ secrets.IBM_CLOUD_API_KEY }} > ~/.ibmcloud/my_key_file
 
-        ansible-galaxy collection install ibm.cloudcollection
+    - name: Install IBM Cloud Ansible Collection
+      run: ansible-galaxy collection install ibm.cloudcollection
+
+    - name: Delete Cluster
+      when: ${{ inputs.delete-cluster }}
+      run: echo "Delete Cluster"
+      # run: ansible-playbook create-cluster.yml
+
+    - name: Create Cluster
+      run: echo "Create Cluster"
+      # run: ansible-playbook create-cluster.yml
