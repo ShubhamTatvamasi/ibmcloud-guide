@@ -1,5 +1,5 @@
 ---
-- name: Cluster config
+- name: Cluster Config
   connection: local
   hosts: localhost
   roles:
