@@ -50,5 +50,4 @@ jobs:
 
     - name: Install frp
       if: ${{ inputs.install-frp }}
-      run: |
-        ansible-playbook install-frp.yml
+      run: ansible-playbook install-frp.yml
