@@ -25,7 +25,7 @@
     path: "{{ ansible_env.HOME }}/.kube"
     state: directory
 
-- name: Copy kubeconfig file
+- name: Copy kube config file
   copy:
     src: "{{ config_file_path }}"
     dest: "{{ ansible_env.HOME }}/.kube/config"
