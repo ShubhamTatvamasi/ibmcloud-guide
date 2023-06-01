@@ -17,7 +17,7 @@ on:
         type: boolean
 
 jobs:
-  build:
+  create-cluster:
     runs-on: ubuntu-latest
     steps:
 
