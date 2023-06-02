@@ -42,3 +42,19 @@
           port: 3000
           protocol: TCP
           targetPort: 3000
+        - name: wireguard-vpn-node01
+          port: 51831
+          protocol: UDP
+          targetPort: 51831
+        - name: wireguard-vpn-node02
+          port: 51832
+          protocol: UDP
+          targetPort: 51832
+        - name: wireguard-vpn-node03
+          port: 51833
+          protocol: UDP
+          targetPort: 51833
+        - name: wireguard-vpn-node04
+          port: 51834
+          protocol: UDP
+          targetPort: 51834
