@@ -1,4 +1,4 @@
 ---
 frp_namespace: frp
-frp_version: 0.50.0
+frp_version: 0.51.0
 metallb_chart_version: 0.13.10
